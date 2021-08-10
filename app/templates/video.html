@@ -1,0 +1,24 @@
+{% extends "base.html" %} 
+
+{% block content %}
+
+<input class="form-control mb-4" type="text" value="{{ url }}" disabled />
+<div class="text-center">
+  <div class="thumbnail mb-4">
+    <img src="{{ yt.thumbnail_url }}" alt="Thumbnail" />
+  </div>
+  <p class="fs-5" style="margin: 0">{{ yt.title }}</p>
+  <p class="text-secondary mb-4">{{ yt.length | duration }}</p>
+  <form method="post" action="{{ url_for('download') }}">
+    <div class="input-group">
+      <button class="btn btn-outline-secondary" type="submit">Download</button>
+      <select class="form-select" id="itag" name="itag">
+        {% for i in yt.streams %}
+        <option value="{{ i.itag }}">{{ i.mime_type }} -- {{ i.resolution }} -- {{ i.filesize | size }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
