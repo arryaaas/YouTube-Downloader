@@ -14,7 +14,7 @@
       <button class="btn btn-outline-secondary" type="submit">Download</button>
       <select class="form-select" id="itag" name="itag">
         {% for i in yt.streams %}
-        <option value="{{ i.itag }}">{{ i.mime_type }} -- {{ i.resolution }} -- {{ i.filesize | size }}</option>
+          <option value="{{ i.itag }}">{{ i.mime_type }} -- {{ i.resolution }} -- {{ i.filesize | size }}</option>
         {% endfor %}
       </select>
     </div>
